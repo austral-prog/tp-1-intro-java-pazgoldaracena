@@ -73,9 +73,9 @@ public class App {
     // 8. Find the Smallest Element in an Array
     public int findMin(int[] array) {
         int min = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < min) {
-                min = array[i];
+        for (int j : array) {
+            if (j < min) {
+                min = j;
             }
         }
         return min;
@@ -84,81 +84,125 @@ public class App {
     // 9. Sum of Elements in an Array
     public int arraySum(int[] array) {
        int sum = 0;
-       for (int i = 0; i < array.length; i++ ) {
-           sum += array[i];
-       }
+        for (int j : array) {
+            sum += j;
+        }
         return sum;
     }
 
     // 10. Convert Celsius to Fahrenheit
     public double celsiusToFahrenheit(double celsius) {
-        double converted = (celsius * 9/5) + 32;
-        return converted;
+        return (celsius * 9/5) + 32;
     }
 
     // 11. Sum of Elements in a List
     public int sumList(List<Integer> list) {
-        // TODO: Implement this method
-        return 0;
+        int total = 0;
+        for (Integer integer : list) {
+            total += integer;
+        }
+        return total;
     }
 
     // 12. Find the Largest Element in a List
     public int findMax(List<Integer> list) {
-        // TODO: Implement this method
-        return 0;
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("List must not be empty");
+        }
+
+        int best = list.getFirst();
+        for (Integer integer : list) {
+            if (integer > best) {
+                best = integer;
+            }
+        }
+
+        return best;
     }
 
     // 13. Filter Even Numbers from a List
     public List<Integer> filterEvenNumbers(List<Integer> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        List<Integer> evenNumbers = new ArrayList<>();
+        for (Integer integer : list) {
+            if (integer % 2 == 0) {
+                evenNumbers.add(integer);
+            }
+        }
+        return evenNumbers;
     }
 
     // 14. Concatenate Two Lists
     public List<String> concatenateLists(List<String> list1, List<String> list2) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        List<String> concatenatedList = new ArrayList<>();
+        for (String s : list1) {
+            concatenatedList.add(s);
+        }
+
+        for (String s : list2) {
+            concatenatedList.add(s);
+        }
+
+        return concatenatedList;
     }
 
     // 15. Check if List Contains Element
     public boolean listContains(List<String> list, String element) {
-        // TODO: Implement this method
+        for (String s : list) {
+            if (s == element) {
+                return true;
+            }
+        }
         return false;
     }
 
     // 16. Convert Strings to Uppercase
     public List<String> toUpperCase(List<String> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        List<String> upperCase = new ArrayList<>();
+        for (String s : list)
+            upperCase.add(s.toUpperCase());
+        return upperCase;
     }
 
     // 17. Remove Duplicates from a List
     public List<Integer> removeDuplicates(List<Integer> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        Set<Integer> singleItems = new HashSet<>(list);
+        return new ArrayList<>(singleItems);
     }
 
     // 18. Convert List to Set for Unique Elements
     public Set<Integer> listToSet(List<Integer> list) {
-        // TODO: Implement this method
-        return new HashSet<>();
+        return new HashSet<>(list);
     }
 
     // 19. Check if Map Contains Key
     public boolean mapContainsKey(Map<String, String> map, String key) {
-        // TODO: Implement this method
+        if (map.containsKey(key)) {
+            return true;
+        }
+
         return false;
     }
 
     // 20. Check if Map Contains Value
     public boolean mapContainsValue(Map<String, String> map, String value) {
-        // TODO: Implement this method
+        if (map.containsValue(value)) {
+            return true;
+        }
         return false;
     }
 
     // 21. Iterate Over a Map
     public List<String> iterateMap(Map<String, String> map) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (map.isEmpty()) {
+            throw new IllegalArgumentException("Map must have elements!");
+        }
+
+        List<String> keyValuePairs = new ArrayList<>();
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            keyValuePairs.add(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        return keyValuePairs;
     }
 }
